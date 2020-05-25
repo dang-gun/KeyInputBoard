@@ -1,0 +1,11 @@
+[
+  {
+    "Pin": "2",
+    "Action_Key": "F1",
+    "Action_VKCode": 112,
+    "Action_Shift": false,
+    "Action_Ctrl": false,
+    "Action_Alt": true,
+    "Explanation": "쥐포스 스크린샷(Geforce Screenshot)"
+  }
+]
