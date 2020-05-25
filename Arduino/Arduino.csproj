@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="KeyInputBoard.fzz" />
     <None Include="KeyInputBoard_Defult\KeyInputBoard_Defult.ino" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
