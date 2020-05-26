@@ -7,5 +7,14 @@
     "Action_Ctrl": false,
     "Action_Alt": true,
     "Explanation": "쥐포스 스크린샷(Geforce Screenshot)"
+  },
+  {
+    "Pin": "3",
+    "Action_Key": "F9",
+    "Action_VKCode": 120,
+    "Action_Shift": false,
+    "Action_Ctrl": false,
+    "Action_Alt": true,
+    "Explanation": "쥐포스 녹화 시작/종료"
   }
 ]
