@@ -16,5 +16,14 @@
     "Action_Ctrl": false,
     "Action_Alt": true,
     "Explanation": "쥐포스 녹화 시작/종료"
+  },
+  {
+    "Pin": "4",
+    "Action_Key": "F12",
+    "Action_VKCode": 123,
+    "Action_Shift": false,
+    "Action_Ctrl": false,
+    "Action_Alt": false,
+    "Explanation": "스팀 스크린샷"
   }
 ]

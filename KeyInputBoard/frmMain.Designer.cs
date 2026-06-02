@@ -55,11 +55,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.devToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDataLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.lvLog = new System.Windows.Forms.ListView();
             this.tsmiFile_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFile_Load = new System.Windows.Forms.ToolStripMenuItem();
+            this.devToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDataLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMouseMoveTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.msgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lvLog = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tsmiFile_LoadFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -308,7 +314,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.devToolStripMenuItem});
+            this.devToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(668, 24);
@@ -319,10 +326,26 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile_Save,
-            this.tsmiFile_Load});
+            this.toolStripMenuItem1,
+            this.tsmiFile_Load,
+            this.tsmiFile_LoadFile});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // tsmiFile_Save
+            // 
+            this.tsmiFile_Save.Name = "tsmiFile_Save";
+            this.tsmiFile_Save.Size = new System.Drawing.Size(180, 22);
+            this.tsmiFile_Save.Text = "Save";
+            this.tsmiFile_Save.Click += new System.EventHandler(this.tsmiFile_Save_Click);
+            // 
+            // tsmiFile_Load
+            // 
+            this.tsmiFile_Load.Name = "tsmiFile_Load";
+            this.tsmiFile_Load.Size = new System.Drawing.Size(180, 22);
+            this.tsmiFile_Load.Text = "Load";
+            this.tsmiFile_Load.Click += new System.EventHandler(this.tsmiFile_Load_Click);
             // 
             // devToolStripMenuItem
             // 
@@ -339,29 +362,55 @@
             this.tsmiDataLoad.Text = "Data Load";
             this.tsmiDataLoad.Click += new System.EventHandler(this.tsmiDataLoad_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMouseMoveTest,
+            this.msgToolStripMenuItem});
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.testToolStripMenuItem.Text = "Test";
+            // 
+            // tsmiMouseMoveTest
+            // 
+            this.tsmiMouseMoveTest.Name = "tsmiMouseMoveTest";
+            this.tsmiMouseMoveTest.Size = new System.Drawing.Size(169, 22);
+            this.tsmiMouseMoveTest.Text = "Mouse Move Test";
+            this.tsmiMouseMoveTest.Click += new System.EventHandler(this.tsmiMouseTest_Click);
+            // 
+            // msgToolStripMenuItem
+            // 
+            this.msgToolStripMenuItem.Name = "msgToolStripMenuItem";
+            this.msgToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.msgToolStripMenuItem.Text = "msg";
+            this.msgToolStripMenuItem.Click += new System.EventHandler(this.msgToolStripMenuItem_Click);
+            // 
             // lvLog
             // 
+            this.lvLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4});
             this.lvLog.HideSelection = false;
             this.lvLog.Location = new System.Drawing.Point(5, 129);
             this.lvLog.Name = "lvLog";
             this.lvLog.Size = new System.Drawing.Size(257, 306);
             this.lvLog.TabIndex = 6;
             this.lvLog.UseCompatibleStateImageBehavior = false;
-            this.lvLog.View = System.Windows.Forms.View.List;
+            this.lvLog.View = System.Windows.Forms.View.Details;
             // 
-            // tsmiFile_Save
+            // columnHeader4
             // 
-            this.tsmiFile_Save.Name = "tsmiFile_Save";
-            this.tsmiFile_Save.Size = new System.Drawing.Size(180, 22);
-            this.tsmiFile_Save.Text = "Save";
-            this.tsmiFile_Save.Click += new System.EventHandler(this.tsmiFile_Save_Click);
+            this.columnHeader4.Width = 230;
             // 
-            // tsmiFile_Load
+            // tsmiFile_LoadFile
             // 
-            this.tsmiFile_Load.Name = "tsmiFile_Load";
-            this.tsmiFile_Load.Size = new System.Drawing.Size(180, 22);
-            this.tsmiFile_Load.Text = "Load";
-            this.tsmiFile_Load.Click += new System.EventHandler(this.tsmiFile_Load_Click);
+            this.tsmiFile_LoadFile.Name = "tsmiFile_LoadFile";
+            this.tsmiFile_LoadFile.Size = new System.Drawing.Size(180, 22);
+            this.tsmiFile_LoadFile.Text = "Load File";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // frmMain
             // 
@@ -424,6 +473,12 @@
         private System.Windows.Forms.ListView lvLog;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile_Save;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile_Load;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMouseMoveTest;
+        private System.Windows.Forms.ToolStripMenuItem msgToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFile_LoadFile;
     }
 }
 

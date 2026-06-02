@@ -5,7 +5,8 @@ ButtonClickCheck BtnList[] =
 {
   ButtonClickCheck(1, HIGH),
   ButtonClickCheck(2, HIGH),
-  ButtonClickCheck(3, HIGH)
+  ButtonClickCheck(3, HIGH),
+  ButtonClickCheck(4, HIGH)
 };
 
 //핀 리스트 개수
@@ -36,7 +37,7 @@ void loop()
     byte leng = Serial.readBytesUntil('\n', temp, 20);
     String sResult = ((String)temp).substring(0, leng);
 
-    if("GetInfo" == sResult)
+    if(sResult == "GetInfo")
     {//인포 요청
       Serial.println("KeyInputBoard");
     }

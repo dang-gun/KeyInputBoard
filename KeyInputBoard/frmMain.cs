@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KeyInputBoard
+namespace KeyInputBoard;
 {
     public partial class frmMain : Form
     {
@@ -38,6 +38,8 @@ namespace KeyInputBoard
             //데이터 읽기 이벤트 연결
             this.spPort.DataReceived += SpPort_DataReceived;
 
+
+            
             
         }
 
@@ -110,6 +112,12 @@ namespace KeyInputBoard
         }
 
         #region 메뉴 - File
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string LastFilePath { get; set; } = string.Empty;
+
         private void tsmiFile_Save_Click(object sender, EventArgs e)
         {
             //모델을 json 문자열로 변환
@@ -512,6 +520,20 @@ namespace KeyInputBoard
             
         }
 
-        
+        private void tsmiMouseTest_Click(object sender, EventArgs e)
+        {
+            double dPixelWidth = 65535 / 1920;
+            double dPixelHeight = 65535 / 1080;
+
+            this.simulator.Mouse.MoveMouseTo(
+                dPixelWidth * (50)
+                , dPixelHeight * (40 + 10));
+            //this.simulator.Mouse.LeftButtonDown();
+        }
+
+        private void msgToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("디버그 메시지");
+        }
     }
 }
