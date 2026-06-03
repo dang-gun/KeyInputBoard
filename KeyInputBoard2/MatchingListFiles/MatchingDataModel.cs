@@ -1,13 +1,12 @@
 ﻿using InputSimulatorStandard.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace KeyInputBoard2;
 
-public class MatchingModel
+namespace KeyInputBoard2.MatchingListFiles;
+
+/// <summary>
+/// 매칭 데이터 모델
+/// </summary>
+public class MatchingDataModel
 {
     /// <summary>
     /// 사용할 핀
@@ -39,9 +38,9 @@ public class MatchingModel
     /// <summary>
     /// 설명
     /// </summary>
-    public string Explanation { get; set; }
+    public string Comment { get; set; }
 
-    public MatchingModel()
+    public MatchingDataModel()
     {
         this.Pin = string.Empty;
         
@@ -51,7 +50,7 @@ public class MatchingModel
         this.Action_Ctrl = false;
         this.Action_Alt = false;
 
-        this.Explanation = string.Empty;
+        this.Comment = string.Empty;
     }
 
     public string[] ToArray()
@@ -105,7 +104,7 @@ public class MatchingModel
 
 
         //설명 추가
-        listReturn.Add(this.Explanation);
+        listReturn.Add(this.Comment);
 
         return listReturn.ToArray();
     }

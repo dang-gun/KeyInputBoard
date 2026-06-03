@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KeyInputBoard;
+namespace KeyInputBoard
 {
     public partial class frmMain : Form
     {

@@ -31,10 +31,13 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             tsmiFile_Save = new ToolStripMenuItem();
+            tsmiFile_SaveAs = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripSeparator();
             tsmiFile_Load = new ToolStripMenuItem();
-            tsmiFile_LoadFile = new ToolStripMenuItem();
+            tsmiFile_LoadSelect = new ToolStripMenuItem();
             devToolStripMenuItem = new ToolStripMenuItem();
+            addLogToolStripMenuItem = new ToolStripMenuItem();
+            tsmiDev_Log_TestLogAdd1 = new ToolStripMenuItem();
             panel1 = new Panel();
             btnStop = new Button();
             btnStart = new Button();
@@ -54,19 +57,17 @@
             cbAlt = new CheckBox();
             cbCtrl = new CheckBox();
             cbShift = new CheckBox();
-            textBox2 = new TextBox();
-            btnNew = new Button();
-            textBox1 = new TextBox();
-            label4 = new Label();
+            txtKey = new TextBox();
             label3 = new Label();
+            btnNew = new Button();
+            txtItemPin = new TextBox();
+            label4 = new Label();
             label2 = new Label();
             lvMatching = new ListView();
             headerId = new ColumnHeader();
             headerPin = new ColumnHeader();
             headerAction = new ColumnHeader();
             headerComment = new ColumnHeader();
-            addLogToolStripMenuItem = new ToolStripMenuItem();
-            tsmiDev_Log_TestLogAdd1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -85,7 +86,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiFile_Save, toolStripMenuItem1, tsmiFile_Load, tsmiFile_LoadFile });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiFile_Save, tsmiFile_SaveAs, toolStripMenuItem1, tsmiFile_Load, tsmiFile_LoadSelect });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "File";
@@ -95,6 +96,14 @@
             tsmiFile_Save.Name = "tsmiFile_Save";
             tsmiFile_Save.Size = new Size(180, 22);
             tsmiFile_Save.Text = "Save";
+            tsmiFile_Save.Click += tsmiFile_Save_Click;
+            // 
+            // tsmiFile_SaveAs
+            // 
+            tsmiFile_SaveAs.Name = "tsmiFile_SaveAs";
+            tsmiFile_SaveAs.Size = new Size(180, 22);
+            tsmiFile_SaveAs.Text = "Save as";
+            tsmiFile_SaveAs.Click += tsmiFile_SaveAs_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -106,12 +115,14 @@
             tsmiFile_Load.Name = "tsmiFile_Load";
             tsmiFile_Load.Size = new Size(180, 22);
             tsmiFile_Load.Text = "Load";
+            tsmiFile_Load.Click += tsmiFile_Load_Click;
             // 
-            // tsmiFile_LoadFile
+            // tsmiFile_LoadSelect
             // 
-            tsmiFile_LoadFile.Name = "tsmiFile_LoadFile";
-            tsmiFile_LoadFile.Size = new Size(180, 22);
-            tsmiFile_LoadFile.Text = "Load File";
+            tsmiFile_LoadSelect.Name = "tsmiFile_LoadSelect";
+            tsmiFile_LoadSelect.Size = new Size(180, 22);
+            tsmiFile_LoadSelect.Text = "Load Select";
+            tsmiFile_LoadSelect.Click += tsmiFile_LoadSelect_Click;
             // 
             // devToolStripMenuItem
             // 
@@ -119,6 +130,20 @@
             devToolStripMenuItem.Name = "devToolStripMenuItem";
             devToolStripMenuItem.Size = new Size(40, 20);
             devToolStripMenuItem.Text = "Dev";
+            // 
+            // addLogToolStripMenuItem
+            // 
+            addLogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiDev_Log_TestLogAdd1 });
+            addLogToolStripMenuItem.Name = "addLogToolStripMenuItem";
+            addLogToolStripMenuItem.Size = new Size(94, 22);
+            addLogToolStripMenuItem.Text = "Log";
+            // 
+            // tsmiDev_Log_TestLogAdd1
+            // 
+            tsmiDev_Log_TestLogAdd1.Name = "tsmiDev_Log_TestLogAdd1";
+            tsmiDev_Log_TestLogAdd1.Size = new Size(145, 22);
+            tsmiDev_Log_TestLogAdd1.Text = "Test Log Add";
+            tsmiDev_Log_TestLogAdd1.Click += tsmiDev_Log_TestLogAdd1_Click;
             // 
             // panel1
             // 
@@ -140,6 +165,7 @@
             btnStop.TabIndex = 4;
             btnStop.Text = "Stop";
             btnStop.UseVisualStyleBackColor = true;
+            btnStop.Click += btnStop_Click;
             // 
             // btnStart
             // 
@@ -149,6 +175,7 @@
             btnStart.TabIndex = 3;
             btnStart.Text = "Start";
             btnStart.UseVisualStyleBackColor = true;
+            btnStart.Click += btnStart_Click;
             // 
             // btnPortRefresh
             // 
@@ -158,6 +185,7 @@
             btnPortRefresh.TabIndex = 2;
             btnPortRefresh.Text = "Refresh";
             btnPortRefresh.UseVisualStyleBackColor = true;
+            btnPortRefresh.Click += btnPortRefresh_Click;
             // 
             // comboboxPorts
             // 
@@ -211,9 +239,8 @@
             panel3.Controls.Add(txtComment);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(btnNew);
-            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(txtItemPin);
             panel3.Controls.Add(label4);
-            panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
             panel3.Location = new Point(273, 28);
             panel3.Name = "panel3";
@@ -228,6 +255,7 @@
             btnDelete.TabIndex = 10;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnEdit
             // 
@@ -237,6 +265,7 @@
             btnEdit.TabIndex = 9;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
@@ -246,6 +275,7 @@
             btnAdd.TabIndex = 8;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // txtComment
             // 
@@ -260,16 +290,17 @@
             panel4.Controls.Add(cbAlt);
             panel4.Controls.Add(cbCtrl);
             panel4.Controls.Add(cbShift);
-            panel4.Controls.Add(textBox2);
-            panel4.Location = new Point(109, 26);
+            panel4.Controls.Add(txtKey);
+            panel4.Controls.Add(label3);
+            panel4.Location = new Point(3, 26);
             panel4.Name = "panel4";
-            panel4.Size = new Size(221, 30);
+            panel4.Size = new Size(327, 30);
             panel4.TabIndex = 6;
             // 
             // cbAlt
             // 
             cbAlt.AutoSize = true;
-            cbAlt.Location = new Point(167, 7);
+            cbAlt.Location = new Point(270, 7);
             cbAlt.Name = "cbAlt";
             cbAlt.Size = new Size(41, 19);
             cbAlt.TabIndex = 8;
@@ -279,7 +310,7 @@
             // cbCtrl
             // 
             cbCtrl.AutoSize = true;
-            cbCtrl.Location = new Point(116, 7);
+            cbCtrl.Location = new Point(219, 7);
             cbCtrl.Name = "cbCtrl";
             cbCtrl.Size = new Size(45, 19);
             cbCtrl.TabIndex = 7;
@@ -289,20 +320,30 @@
             // cbShift
             // 
             cbShift.AutoSize = true;
-            cbShift.Location = new Point(59, 7);
+            cbShift.Location = new Point(162, 7);
             cbShift.Name = "cbShift";
             cbShift.Size = new Size(51, 19);
             cbShift.TabIndex = 6;
             cbShift.Text = "Shift";
             cbShift.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtKey
             // 
-            textBox2.Location = new Point(3, 3);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(50, 23);
-            textBox2.TabIndex = 5;
+            txtKey.Location = new Point(106, 3);
+            txtKey.Name = "txtKey";
+            txtKey.ReadOnly = true;
+            txtKey.Size = new Size(50, 23);
+            txtKey.TabIndex = 5;
+            txtKey.PreviewKeyDown += txtKey_PreviewKeyDown;
+            // 
+            // label3
+            // 
+            label3.Location = new Point(0, 2);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 2;
+            label3.Text = "Action : ";
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnNew
             // 
@@ -312,13 +353,14 @@
             btnNew.TabIndex = 5;
             btnNew.Text = "New";
             btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += btnNew_Click;
             // 
-            // textBox1
+            // txtItemPin
             // 
-            textBox1.Location = new Point(109, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 4;
+            txtItemPin.Location = new Point(109, 4);
+            txtItemPin.Name = "txtItemPin";
+            txtItemPin.Size = new Size(100, 23);
+            txtItemPin.TabIndex = 4;
             // 
             // label4
             // 
@@ -329,33 +371,27 @@
             label4.Text = "Comment : ";
             label4.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label3
-            // 
-            label3.Location = new Point(3, 26);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 23);
-            label3.TabIndex = 2;
-            label3.Text = "Action : ";
-            label3.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // label2
             // 
             label2.Location = new Point(3, 3);
             label2.Name = "label2";
             label2.Size = new Size(100, 23);
             label2.TabIndex = 1;
-            label2.Text = "Port : ";
+            label2.Text = "Pin : ";
             label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lvMatching
             // 
             lvMatching.Columns.AddRange(new ColumnHeader[] { headerId, headerPin, headerAction, headerComment });
+            lvMatching.FullRowSelect = true;
             lvMatching.Location = new Point(273, 182);
+            lvMatching.MultiSelect = false;
             lvMatching.Name = "lvMatching";
             lvMatching.Size = new Size(429, 307);
             lvMatching.TabIndex = 4;
             lvMatching.UseCompatibleStateImageBehavior = false;
             lvMatching.View = View.Details;
+            lvMatching.SelectedIndexChanged += lvMatching_SelectedIndexChanged;
             // 
             // headerId
             // 
@@ -376,20 +412,6 @@
             headerComment.Text = "Comment";
             headerComment.Width = 200;
             // 
-            // addLogToolStripMenuItem
-            // 
-            addLogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiDev_Log_TestLogAdd1 });
-            addLogToolStripMenuItem.Name = "addLogToolStripMenuItem";
-            addLogToolStripMenuItem.Size = new Size(180, 22);
-            addLogToolStripMenuItem.Text = "Log";
-            // 
-            // tsmiDev_Log_TestLogAdd1
-            // 
-            tsmiDev_Log_TestLogAdd1.Name = "tsmiDev_Log_TestLogAdd1";
-            tsmiDev_Log_TestLogAdd1.Size = new Size(180, 22);
-            tsmiDev_Log_TestLogAdd1.Text = "Test Log Add";
-            tsmiDev_Log_TestLogAdd1.Click += tsmiDev_Log_TestLogAdd1_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -403,6 +425,8 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
+            Shown += Form1_Shown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
@@ -422,7 +446,7 @@
         private ToolStripMenuItem tsmiFile_Save;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem tsmiFile_Load;
-        private ToolStripMenuItem tsmiFile_LoadFile;
+        private ToolStripMenuItem tsmiFile_LoadSelect;
         private ToolStripMenuItem devToolStripMenuItem;
         private Panel panel1;
         private Label label1;
@@ -440,9 +464,9 @@
         private Label label2;
         private Panel panel4;
         private CheckBox cbShift;
-        private TextBox textBox2;
+        private TextBox txtKey;
         private Button btnNew;
-        private TextBox textBox1;
+        private TextBox txtItemPin;
         private CheckBox cbAlt;
         private CheckBox cbCtrl;
         private Button btnAdd;
@@ -457,5 +481,6 @@
         private ListBox listBox1;
         private ToolStripMenuItem addLogToolStripMenuItem;
         private ToolStripMenuItem tsmiDev_Log_TestLogAdd1;
+        private ToolStripMenuItem tsmiFile_SaveAs;
     }
 }
